@@ -7,16 +7,17 @@
 	display: flex;
 	justify-content: center;
 }
-.locales{
+.datos{
 	margin: 20px auto;
 	display: table;
 	border-collapse: separate;
 	border-spacing: 0px;
 }
-.locales>a{
+.datos>a{
 	text-decoration:none;
+	margin: 10px;
 }
-.locales>a>div{
+.datos>a>div{
 	display: table-cell;
 	background-image: url("imgs/local.jpg");
 	margin: 20px;
@@ -26,7 +27,7 @@
 	border: 1px solid black;
 	vertical-align: middle;
 }
-.locales>a>div>div{
+.datos>a>div>div{
 	display: table-cell;
 	width: 400px;
 	height: 200px;

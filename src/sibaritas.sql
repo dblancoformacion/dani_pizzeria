@@ -4,21 +4,19 @@ USE dani_pizzeria;
 
 CREATE TABLE articulos(
   id_articulo int AUTO_INCREMENT,
-  articulo varchar(255),
+  articulo varchar(127),
   descripcion varchar(255),
   grupo varchar(255),
   PRIMARY KEY(id_articulo),
   UNIQUE (articulo)  
   );
-
 CREATE TABLE ingredientes(
   id_ingrediente int AUTO_INCREMENT,
-  ingrediente varchar(255),
+  ingrediente varchar(127),
   precio float,
   PRIMARY KEY(id_ingrediente),
   UNIQUE  (ingrediente)  
   );
-
 CREATE  TABLE agregan(
   id_articulo int,
   id_ingrediente int,
@@ -27,19 +25,18 @@ CREATE  TABLE agregan(
   FOREIGN KEY (id_articulo) REFERENCES articulos(id_articulo),
   FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
   );
-
 CREATE TABLE locales(
   id_local int AUTO_INCREMENT,
-  establecimiento varchar(255),
+  establecimiento varchar(127),
   localidad varchar(255),
   PRIMARY KEY(id_local),
-  UNIQUE  (establecimiento)
+  UNIQUE(establecimiento)
   );
 CREATE TABLE servicios(
   id_servicio int AUTO_INCREMENT,
-  servicio varchar(255),
+  servicio varchar(127),
   PRIMARY KEY (id_servicio),
-  UNIQUE (servicio)
+  UNIQUE(servicio)
   );
 CREATE TABLE venden(
   id_articulo int,
