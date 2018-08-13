@@ -142,7 +142,7 @@ INSERT articulos (articulo,grupo,descripcion)
   ('Lambrusco','Bebidas','75 cl'),
   ('Moscato','Bebidas','75 cl');
 
-/*INSERT ingredientes(ingrediente,precio)
+INSERT ingredientes(ingrediente,precio)
   VALUES ('Pepinillos',1),('Queso Mozzarella',1),('Gambas',1.5);
 
 INSERT venden (id_local, id_servicio, id_articulo, precio)
@@ -153,7 +153,7 @@ INSERT venden (id_local, id_servicio, id_articulo, precio)
   (2,2,3,7.9),
   (2,1,4,8.2),
   (2,2,4,7.6);
-SELECT * FROM venden; 
+
 INSERT agregan (id_ingrediente,id_articulo,cantidad)
   VALUES(1,2,2);
 
@@ -189,5 +189,5 @@ SELECT articulo,
   JOIN ingredientes i USING(id_ingrediente)
   JOIN articulos USING(id_articulo); 
   
- 
+*/ 
   
