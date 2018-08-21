@@ -2,10 +2,18 @@
 	margin: 0px;
 	padding: 0px;
 	font-family: Verdana,Arial;
+
+}
+body{
+	background-image: url("imgs/bg.jpg");
+	background-attachment: fixed;	
+	background-size: 100%;
+
 }
 .container{
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	
 }
 .datos{
 	margin: 20px auto;
@@ -15,7 +23,7 @@
 }
 .datos>a{
 	text-decoration:none;
-	margin: 10px;
+	margin:10px;
 }
 .datos>a>div{
 	display: table-cell;
@@ -24,7 +32,7 @@
 	width: 400px;
 	height: 200px;
 	border-radius: 10px;
-	border: 1px solid black;
+	
 	vertical-align: middle;
 }
 .datos>a>div>div{
