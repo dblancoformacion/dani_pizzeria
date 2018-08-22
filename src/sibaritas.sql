@@ -17,6 +17,7 @@ CREATE TABLE ingredientes(
   id_ingrediente int AUTO_INCREMENT,
   ingrediente varchar(255),
   precio float,
+  gluten varchar (2),
   PRIMARY KEY(id_ingrediente),
   UNIQUE  (ingrediente)  
   );
@@ -56,6 +57,36 @@ CREATE TABLE venden(
   FOREIGN KEY(id_servicio) REFERENCES servicios (id_servicio),
   FOREIGN KEY(id_local) REFERENCES locales (id_local)  
   );
+CREATE TABLE metodos_de_pago(
+  id_metodo_pago int AUTO_INCREMENT,
+  efectivo varchar (255),
+  tarjeta  varchar (255),
+  pay_pal varchar (255),
+  PRIMARY KEY (id_metodo_pago)
+  );  
+CREATE TABLE carritos(
+  id_carrito int AUTO_INCREMENT,
+  id_metodo_pago int,
+  PRIMARY KEY (id_carrito),
+  FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pago(id_metodo_pago)    
+  );
+
+CREATE TABLE clientes(
+  id_cliente int AUTO_INCREMENT,
+  nombre varchar (255),
+  cp int,
+  direccion varchar (255),
+  telefono int,
+  PRIMARY KEY (id_cliente)  
+  );
+
+CREATE TABLE piden(
+  id_carrito int,
+  id_cliente int,
+  PRIMARY KEY (id_cliente,id_carrito)  
+  );
+
+
 
 INSERT locales (establecimiento,localidad)
   VALUES ("Sibarita's Guevara","C/Guevara 28, Santander"),
