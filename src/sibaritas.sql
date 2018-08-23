@@ -57,25 +57,27 @@ CREATE TABLE venden(
   FOREIGN KEY(id_servicio) REFERENCES servicios (id_servicio),
   FOREIGN KEY(id_local) REFERENCES locales (id_local)  
   );
+
+-- preguntar a david si está correcto
 CREATE TABLE metodos_de_pago(
   id_metodo_pago int AUTO_INCREMENT,
-  efectivo varchar (255),
-  tarjeta  varchar (255),
-  pay_pal varchar (255),
+  forma varchar(255),  
   PRIMARY KEY (id_metodo_pago)
-  );  
+  );
+ SELECT * FROM metodos_de_pago; 
+
 CREATE TABLE carritos(
   id_carrito int AUTO_INCREMENT,
   id_metodo_pago int,
-  PRIMARY KEY (id_carrito),
+  PRIMARY KEY (id_carrito,id_metodo_pago),
   FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pago(id_metodo_pago)    
   );
 
 CREATE TABLE clientes(
   id_cliente int AUTO_INCREMENT,
-  nombre varchar (255),
+  nombre varchar(255),
   cp int,
-  direccion varchar (255),
+  direccion varchar(255),
   telefono int,
   PRIMARY KEY (id_cliente)  
   );
@@ -85,6 +87,8 @@ CREATE TABLE piden(
   id_cliente int,
   PRIMARY KEY (id_cliente,id_carrito)  
   );
+
+
 
 
 
@@ -317,8 +321,23 @@ INSERT agregan (id_ingrediente,id_articulo,cantidad)
   -- pastel de patatas
   (37,52,1),(27,52,1),(33,52,1);
 
-
 SELECT * FROM venden;
+
+-- tabla de metodos de pago prueba
+  INSERT metodos_de_pago (forma)
+  VALUES ('Efectivo'),('Tarjeta de crédito o débito'),('Pay Pal');
+
+SELECT * FROM metodos_de_pago;
+
+-- vamos a añadir dos clientes de prueba
+  INSERT clientes (nombre, cp, direccion, telefono)
+  VALUES 
+    ('Daniel Delgado', '39008', 'Avd. Valdecilla 11 3ºB', '682323318'),
+    ('Adriana Rodríguez', '39008', 'Avd. Valdecilla 11 3ºB', '697671487'); 
+
+
+
+
 /*Que articulos enviamos a domicilio desde J.Diaz*/
 
  /*SELECT articulo,venden.precio FROM venden
