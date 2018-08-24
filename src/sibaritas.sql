@@ -82,11 +82,7 @@ CREATE TABLE clientes(
   PRIMARY KEY (id_cliente)  
   );
 
-CREATE TABLE piden(
-  id_carrito int,
-  id_cliente int,
-  PRIMARY KEY (id_cliente,id_carrito)  
-  );
+
 
 
 
@@ -327,7 +323,6 @@ SELECT * FROM venden;
   INSERT metodos_de_pago (forma)
   VALUES ('Efectivo'),('Tarjeta de crédito o débito'),('Pay Pal');
 
-SELECT * FROM metodos_de_pago;
 
 -- vamos a añadir dos clientes de prueba
   INSERT clientes (nombre, cp, direccion, telefono)
