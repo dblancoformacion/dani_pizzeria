@@ -17,17 +17,19 @@ CREATE TABLE ingredientes(
   id_ingrediente int AUTO_INCREMENT,
   ingrediente varchar(255),
   precio float,
-  gluten varchar (2),
+  gluten bool,
   PRIMARY KEY(id_ingrediente),
   UNIQUE  (ingrediente)  
   );
 SELECT * FROM ingredientes;
 
 CREATE  TABLE agregan(
+  id_agrega int AUTO_INCREMENT,
   id_articulo int,
   id_ingrediente int,
   cantidad int DEFAULT 1,
-  PRIMARY KEY (id_ingrediente,id_articulo),
+  PRIMARY KEY (id_agrega),
+  UNIQUE  (id_articulo,id_ingrediente),
   FOREIGN KEY (id_articulo) REFERENCES articulos(id_articulo),
   FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
   );
@@ -48,49 +50,61 @@ CREATE TABLE servicios(
   );
 
 CREATE TABLE venden(
+  id_vende int AUTO_INCREMENT,
   id_articulo int,
   id_servicio int,
   id_local int,
   precio float,
-  PRIMARY KEY (id_articulo,id_servicio,id_local),
+  PRIMARY KEY (id_vende),
+  UNIQUE  (id_articulo,id_servicio,id_local),
   FOREIGN KEY(id_articulo) REFERENCES articulos (id_articulo),
   FOREIGN KEY(id_servicio) REFERENCES servicios (id_servicio),
   FOREIGN KEY(id_local) REFERENCES locales (id_local)  
   );
 
 -- preguntar a david si está correcto
-CREATE TABLE metodos_de_pago(
+CREATE TABLE metodos_de_pagos(
   id_metodo_pago int AUTO_INCREMENT,
-  forma varchar(255),  
+  metodo_de_pago varchar(255),  
   PRIMARY KEY (id_metodo_pago)
   );
- SELECT * FROM metodos_de_pago; 
-
-CREATE TABLE carritos(
-  id_carrito int AUTO_INCREMENT,
-  id_metodo_pago int,
-  PRIMARY KEY (id_carrito,id_metodo_pago),
-  FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pago(id_metodo_pago)    
-  );
+ SELECT * FROM metodos_de_pago;
 
 CREATE TABLE clientes(
   id_cliente int AUTO_INCREMENT,
-  nombre varchar(255),
+  cliente varchar(255),
   cp int,
   direccion varchar(255),
   telefono int,
   PRIMARY KEY (id_cliente)  
   );
 
+CREATE TABLE carritos(
+  id_carrito int AUTO_INCREMENT,
+  id_metodo_pago int,
+  id_cliente int,
+  PRIMARY KEY (id_carrito),
+  -- UNIQUE(id_metodo_pago,id_cliente),
+  FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pago(id_metodo_pago),
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)    
+  );
 
-
-
+CREATE TABLE seleccionan(
+  id_selecciona int AUTO_INCREMENT,
+  id_agrega int,
+  uds_ingrediente int
+  
+  
+  
+  );
 
 
 
 INSERT locales (establecimiento,localidad)
-  VALUES ("Sibarita's Guevara","C/Guevara 28, Santander"),
-  ("Sibarita's Jiménez Díaz","C/Jiménez Díaz 14, Santander");
+  VALUES 
+  ("Sibarita's Guevara","C/Guevara 28, Santander"),
+  ("Sibarita's Jiménez Díaz","C/Jiménez Díaz 14, Santander")
+  ;
 
 SELECT * FROM locales;
 INSERT servicios(servicio)
@@ -320,12 +334,12 @@ INSERT agregan (id_ingrediente,id_articulo,cantidad)
 SELECT * FROM venden;
 
 -- tabla de metodos de pago prueba
-  INSERT metodos_de_pago (forma)
+  INSERT metodos_de_pagos (metodo_de_pago)
   VALUES ('Efectivo'),('Tarjeta de crédito o débito'),('Pay Pal');
 
 
 -- vamos a añadir dos clientes de prueba
-  INSERT clientes (nombre, cp, direccion, telefono)
+  INSERT clientes (cliente, cp, direccion, telefono)
   VALUES 
     ('Daniel Delgado', '39008', 'Avd. Valdecilla 11 3ºB', '682323318'),
     ('Adriana Rodríguez', '39008', 'Avd. Valdecilla 11 3ºB', '697671487'); 
