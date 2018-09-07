@@ -92,10 +92,9 @@ CREATE TABLE carritos(
 CREATE TABLE seleccionan(
   id_selecciona int AUTO_INCREMENT,
   id_agrega int,
-  uds_ingrediente int
-  
-  
-  
+  uds_ingrediente int,
+  PRIMARY KEY(id_selecciona),
+  FOREIGN KEY (id_agrega) REFERENCES agregan(id_agrega)
   );
 
 
@@ -377,7 +376,17 @@ SELECT articulo,
   id_articulo=3
   ) c1 JOIN agregan USING (id_articulo)
   JOIN ingredientes i USING(id_ingrediente)
-  JOIN articulos USING(id_articulo); 
+  JOIN articulos USING(id_articulo); */
   
  
   
+SELECT articulo FROM articulos WHERE  grupo='pizzas';
+
+CREATE VIEW pizzas AS
+  SELECT articulo FROM articulos WHERE  grupo='pizzas';
+
+SELECT articulo FROM articulos WHERE grupo='platos';
+
+CREATE VIEW platos AS
+  SELECT articulo FROM articulos WHERE grupo='platos';
+
