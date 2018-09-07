@@ -68,7 +68,7 @@ CREATE TABLE metodos_de_pagos(
   metodo_de_pago varchar(255),  
   PRIMARY KEY (id_metodo_pago)
   );
- SELECT * FROM metodos_de_pago;
+ SELECT * FROM metodos_de_pagos;
 
 CREATE TABLE clientes(
   id_cliente int AUTO_INCREMENT,
@@ -85,7 +85,7 @@ CREATE TABLE carritos(
   id_cliente int,
   PRIMARY KEY (id_carrito),
   -- UNIQUE(id_metodo_pago,id_cliente),
-  FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pago(id_metodo_pago),
+  FOREIGN KEY (id_metodo_pago) REFERENCES metodos_de_pagos(id_metodo_pago),
   FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)    
   );
 
@@ -342,41 +342,6 @@ SELECT * FROM venden;
   VALUES 
     ('Daniel Delgado', '39008', 'Avd. Valdecilla 11 3ºB', '682323318'),
     ('Adriana Rodríguez', '39008', 'Avd. Valdecilla 11 3ºB', '697671487'); 
-
-
-
-
-/*Que articulos enviamos a domicilio desde J.Diaz*/
-
- /*SELECT articulo,venden.precio FROM venden
-  INNER JOIN locales USING(id_local)
-  INNER  JOIN servicios USING (id_servicio)
-  INNER  JOIN articulos USING (id_articulo)
-  WHERE establecimiento LIKE '%Díaz%'
-  AND servicio LIKE '%domicilio%';
-
-/*Calcular el precio de carbonara en j.diaz a domicilio y con doble pepinillo
-  */
-/*TRUNCATE agregan;
-INSERT agregan (id_ingrediente, id_articulo, cantidad)
-  VALUES (1,3,2),(3,3,1),(2,3,1);
-SELECT * FROM agregan;
-
-SELECT id_articulo,precio FROM venden WHERE  
-  id_local=2 AND
-  id_servicio=1 AND
-  id_articulo=3;
-
-SELECT articulo,
-  ROUND(c1.precio+
-  SUM(i.precio*cantidad),2) FROM (
-  SELECT id_articulo,precio FROM venden WHERE  
-  id_local=2 AND
-  id_servicio=1 AND
-  id_articulo=3
-  ) c1 JOIN agregan USING (id_articulo)
-  JOIN ingredientes i USING(id_ingrediente)
-  JOIN articulos USING(id_articulo); */
   
  
   
