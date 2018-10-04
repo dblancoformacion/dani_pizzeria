@@ -355,3 +355,4 @@ SELECT articulo FROM articulos WHERE grupo='platos';
 CREATE VIEW platos AS
   SELECT articulo FROM articulos WHERE grupo='platos';
 
+
