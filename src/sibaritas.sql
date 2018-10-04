@@ -101,10 +101,12 @@ CREATE TABLE compran(
   id_compra int AUTO_INCREMENT,
   id_selecciona int,
   id_vende int,
+  id_carrito int,
   uds_articulo int,
   PRIMARY KEY(id_compra),
   FOREIGN KEY(id_selecciona) REFERENCES seleccionan(id_selecciona),
-  FOREIGN KEY(id_vende) REFERENCES venden(id_vende)  
+  FOREIGN KEY(id_vende) REFERENCES venden(id_vende),
+  FOREIGN KEY(id_compra)REFERENCES carritos(id_carrito)  
   );
 
 INSERT locales (establecimiento,localidad)
@@ -353,15 +355,18 @@ INSERT agregan (id_ingrediente,id_articulo,cantidad)
   
  
   
--- SELECT articulo FROM articulos WHERE  grupo='pizzas';
--- 
--- CREATE VIEW pizzas AS
---   SELECT articulo FROM articulos WHERE  grupo='pizzas';
--- 
--- SELECT articulo FROM articulos WHERE grupo='platos';
--- 
--- CREATE VIEW platos AS
---   SELECT articulo FROM articulos WHERE grupo='platos';
+SELECT articulo FROM articulos WHERE  grupo='pizzas';
+
+CREATE VIEW pizzas AS
+  SELECT articulo FROM articulos WHERE  grupo='pizzas';
+
+SELECT articulo FROM articulos WHERE grupo='platos';
+
+CREATE VIEW platos AS
+  SELECT articulo FROM articulos WHERE grupo='platos';
+
+
+
 
 
 
