@@ -12,12 +12,12 @@
     <ConnectionString>User Id=root;Host=localhost;Character Set=utf8</ConnectionString>
     <Database>dani_pizzeria</Database>
   </Connection>
-  <Views ShowAdditionalViews="False" IsLayoutActiveAttribute="True" MainViewAttribute="Code" MainViewScale="47">
+  <Views ShowAdditionalViews="False" IsLayoutActiveAttribute="True" MainViewAttribute="Code" MainViewScale="50">
     <View Name="Design" Visible="True">
       <Data>
-        <StatementType>Select</StatementType>
+        <StatementType>Insert</StatementType>
         <ActiveQuery>0</ActiveQuery>
-        <SubQuery Id="0" Open="0" LocationX="-231.417415502003" LocationY="37.2395841037706" Scale="0.375944">
+        <SubQuery Id="0" Open="0" LocationX="-181.361608582581" LocationY="37.2023812477089" Scale="0.43008">
           <PageOptions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <HorizontalOverlap>0</HorizontalOverlap>
             <VerticalOverlap>0</VerticalOverlap>
@@ -35,7 +35,7 @@
             </PaperSize>
           </PageOptions>
           <Tables>
-            <Table Name="articulos" Left="40" Top="40" Width="203.0838" Height="138" Collapsed="False" />
+            <Table Name="locales" Left="40" Top="40" Width="208.6371" Height="120" Collapsed="False" />
           </Tables>
         </SubQuery>
       </Data>

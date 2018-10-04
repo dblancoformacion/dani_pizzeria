@@ -10,7 +10,7 @@ CREATE TABLE articulos(
   PRIMARY KEY(id_articulo),
   UNIQUE (articulo)  
   );
-SELECT * FROM articulos; 
+-- SELECT * FROM articulos; 
 
 
 CREATE TABLE ingredientes(
@@ -21,7 +21,7 @@ CREATE TABLE ingredientes(
   PRIMARY KEY(id_ingrediente),
   UNIQUE  (ingrediente)  
   );
-SELECT * FROM ingredientes;
+-- SELECT * FROM ingredientes;
 
 CREATE  TABLE agregan(
   id_agrega int AUTO_INCREMENT,
@@ -33,7 +33,7 @@ CREATE  TABLE agregan(
   FOREIGN KEY (id_articulo) REFERENCES articulos(id_articulo),
   FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
   );
-SELECT * FROM agregan;
+-- SELECT * FROM agregan;
 
 CREATE TABLE locales(
   id_local int AUTO_INCREMENT,
@@ -68,7 +68,7 @@ CREATE TABLE metodos_de_pagos(
   metodo_de_pago varchar(255),  
   PRIMARY KEY (id_metodo_pago)
   );
- SELECT * FROM metodos_de_pagos;
+--  SELECT * FROM metodos_de_pagos;
 
 CREATE TABLE clientes(
   id_cliente int AUTO_INCREMENT,
@@ -97,7 +97,15 @@ CREATE TABLE seleccionan(
   FOREIGN KEY (id_agrega) REFERENCES agregan(id_agrega)
   );
 
-
+CREATE TABLE compran(
+  id_compra int AUTO_INCREMENT,
+  id_selecciona int,
+  id_vende int,
+  uds_articulo int,
+  PRIMARY KEY(id_compra),
+  FOREIGN KEY(id_selecciona) REFERENCES seleccionan(id_selecciona),
+  FOREIGN KEY(id_vende) REFERENCES venden(id_vende)  
+  );
 
 INSERT locales (establecimiento,localidad)
   VALUES 
@@ -105,11 +113,11 @@ INSERT locales (establecimiento,localidad)
   ("Sibarita's Jiménez Díaz","C/Jiménez Díaz 14, Santander")
   ;
 
-SELECT * FROM locales;
+-- SELECT * FROM locales;
 INSERT servicios(servicio)
   VALUES ('Reparto a domicilio'), ('Recogida en local');
 
-SELECT * FROM servicios;
+-- SELECT * FROM servicios;
 INSERT articulos (articulo,grupo,descripcion)
   VALUES 
   ('Margarita','Pizzas','Tomate,mozarella y orégano'),
@@ -196,9 +204,9 @@ INSERT articulos (articulo,grupo,descripcion)
   ('Ñoquis','Platos','Pasta fresca de patata con salsa a elegir: boloñesa, cuatro quesos o pesto'),
   ('Hamburguesa Vegetariana','Platos',"Hamburguesa de soja, tomate, cebolla, lechuga, pepinillos, mayonesa y el toque Sibarita's");
 
-SELECT * FROM articulos; 
-
-SELECT * FROM ingredientes;  
+-- SELECT * FROM articulos; 
+-- 
+-- SELECT * FROM ingredientes;  
 
 INSERT ingredientes(ingrediente,precio)
   VALUES ('Pollo',1.5),('Tomate natural',1.5),('Gambas',1.5),('Jamón serrano',1.5),('Atún',1.5),('Anchoas',1.5),('Carne',1.5),('Bechamel',1.5),('Berenjenas',1.5),('Lomo',1.5),('Alcachofas',1.5),
@@ -236,7 +244,7 @@ INSERT venden (id_local, id_servicio, id_articulo, precio)
   (1,2,74,1.9),(1,2,75,1.8),(1,2,76,6.4),(1,2,77,9.2),(1,2,78,9.2),(1,2,79,6),(1,2,80,4),(1,2,81,8.6),(1,2,82,8.6),(1,2,83,5.9);
 
 
-SELECT * FROM venden; 
+-- SELECT * FROM venden; 
 INSERT agregan (id_ingrediente,id_articulo,cantidad)
   VALUES
   -- pizza margarita
@@ -330,7 +338,7 @@ INSERT agregan (id_ingrediente,id_articulo,cantidad)
   -- pastel de patatas
   (37,52,1),(27,52,1),(33,52,1);
 
-SELECT * FROM venden;
+-- SELECT * FROM venden;
 
 -- tabla de metodos de pago prueba
   INSERT metodos_de_pagos (metodo_de_pago)
@@ -345,14 +353,16 @@ SELECT * FROM venden;
   
  
   
-SELECT articulo FROM articulos WHERE  grupo='pizzas';
+-- SELECT articulo FROM articulos WHERE  grupo='pizzas';
+-- 
+-- CREATE VIEW pizzas AS
+--   SELECT articulo FROM articulos WHERE  grupo='pizzas';
+-- 
+-- SELECT articulo FROM articulos WHERE grupo='platos';
+-- 
+-- CREATE VIEW platos AS
+--   SELECT articulo FROM articulos WHERE grupo='platos';
 
-CREATE VIEW pizzas AS
-  SELECT articulo FROM articulos WHERE  grupo='pizzas';
 
-SELECT articulo FROM articulos WHERE grupo='platos';
-
-CREATE VIEW platos AS
-  SELECT articulo FROM articulos WHERE grupo='platos';
 
 
